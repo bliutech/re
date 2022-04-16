@@ -4,7 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
 import 'font-awesome/css/font-awesome.min.css'
 
-export default function Navbar() {
+export default function Navbar({ setUser }) {
 	const [isActive, setActive] = useState(false)
 	const navBtn = document.getElementById('nav-toggle')
 	const links = document.getElementById('nav-links')
@@ -31,27 +31,26 @@ export default function Navbar() {
 						id='nav-links'
 					>
 						<li>
-							<a href='#home' className='nav-link scroll-link'>
-								home
-							</a>
+							<a className='nav-link scroll-link'>home</a>
 						</li>
 						<li>
-							<a href='#services' className='nav-link scroll-link'>
-								recycle
-							</a>
+							<a className='nav-link scroll-link'>recycle</a>
 						</li>
 						<li>
-							<a href='#featured' className='nav-link scroll-link'>
-								leaderboard
-							</a>
+							<a className='nav-link scroll-link'>leaderboard</a>
 						</li>
 						<li>
-							<a href='#gallery' className='nav-link scroll-link'>
-								about
-							</a>
+							<a className='nav-link scroll-link'>about</a>
 						</li>
 						<li>
-							<a href='#gallery' className='nav-link scroll-link'>
+							<a
+								className='nav-link scroll-link'
+								onClick={() => {
+									console.log('hello')
+									setUser(null)
+									localStorage.clear()
+								}}
+							>
 								logout
 							</a>
 						</li>
