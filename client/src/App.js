@@ -3,12 +3,14 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css'
 
 // pages
+
 import Home from './pages/Home'
 import LoginRegister from './pages/LoginRegister'
 import Camera from './pages/Camera'
 import Error404 from './pages/Error404'
 import ProtectedRoute from './components/ProtectedRoute'
 import Navbar from './components/Navbar'
+import About from "./pages/About";
 
 function App() {
 	const [user, setUser] = useState()
@@ -29,6 +31,7 @@ function App() {
 					}
 				/>
 				<Route path='/camera' element={<Camera />} />
+        <Route path="/about" element={<About />} />
 				<Route path='*' element={<Error404 />} />
 			</Routes>
 		</div>
