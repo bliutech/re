@@ -7,6 +7,7 @@ from flask_cors import CORS
 
 from db import db
 from resources.user import User
+from resources.cv import CV
 
 
 app = Flask(__name__)
@@ -25,6 +26,8 @@ def create_tables():
 
 
 api.add_resource(User, "/register")
+api.add_resource(CV, "/check-img")
+
 
 if __name__ == "__main__":
     db.init_app(app)
