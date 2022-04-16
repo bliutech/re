@@ -26,7 +26,7 @@ def create_tables():
 
 
 api.add_resource(User, "/register")
-api.add_resource(CV, "/check-img")
+api.add_resource(CV, "/img")
 
 
 if __name__ == "__main__":
