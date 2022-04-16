@@ -1,0 +1,111 @@
+:root {
+    --colour-change : rgb(0, 128, 128);
+  }
+  
+  .videoCont {
+      display: none;
+      width: 70vw;
+      height: 70vw;
+      max-height: 70vh;
+      max-width: 70vh;
+      overflow: hidden;
+      margin:2rem;
+  }
+  
+  .player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .canvas {
+    position: absolute;
+  }
+  
+  
+  body {
+    height: 100vh;
+    margin: 0;
+    background-color: #201f21;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: sans-serif;
+  }
+  
+  #jungle {
+    flex: 0 0 auto;
+    display: block;
+    background-image: 
+      linear-gradient(
+        hsla(200, 5%, 1% , 0), 
+        hsla(200, 90%, 1%, 1)
+      ),
+      url(https://images.unsplash.com/photo-1516528387618-afa90b13e000?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=9b98afc9486dcb6e25f5daa32f351625);
+    background-color: hsl(200, 30%, 35%);
+    background-blend-mode: overlay;
+    background-size: cover;
+    width: 40vw;
+    height: 40vw;
+    max-height: 60vh;
+    max-width: 60vh;
+    border: solid 5px var(--colour-change);
+    border-radius: 50%;
+    transition: background-color 0.8s ease-out;
+  }
+  
+  .green {
+    fill: #62bc86;
+  }
+  
+  .lightgreen{
+    fill: #22b895;
+  }
+  
+  .branch {
+    fill: #4e4e4d;
+  }
+  
+  .tongue{
+    fill: #ea88b5;
+  }
+  
+  #tongue, #blob {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  
+  .change {
+    fill: var(--colour-change);
+    transition: fill 0.8s ease-out;
+  }
+  
+  .changeLight {
+    fill: #fff;
+    transition: fill 0.8s ease-out;
+  }
+  
+  #box {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: green;
+    transition: all 1s ease ;
+  }
+  
+  #flypath {
+    fill: none;
+    stroke: none;
+  }
+  
+  #fly {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #flybody {
+    fill: #424242;
+  }
