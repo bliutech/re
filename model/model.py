@@ -86,7 +86,9 @@ def model(input_, model_path, process=True):
 
     model_load = Model(3 * 64 * 64, 12)
     # change the path inside torch.load depending on the model
-    model_load.load_state_dict(torch.load(model_path))
+    model_load.load_state_dict(
+        torch.load(model_path, map_location=torch.device("cpu")),
+    )
     model_load.eval()
 
     for batch_inputs, batch_labels in iter(loader):
