@@ -1,7 +1,7 @@
 
 from xml.dom import NOT_FOUND_ERR
 
-
+# Source: CalRecycle
 trash_dict = {
     "landfill": ["clothes", "shoes", "trash"],
     "recycle": ["brown-glass", "green-glass", "white-glass", "plastic", "paper"],
