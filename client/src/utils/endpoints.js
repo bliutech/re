@@ -3,7 +3,7 @@ export const handleLogin = async (email, password) => {
 		username: email,
 		password: password,
 	}
-	const res = await fetch('http://localhost:5000/auth', {
+	const res = await fetch('http://localhost:8000/auth', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
