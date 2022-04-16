@@ -1,9 +1,22 @@
+export function backend(endpoint){
+	const mode = "development" // "development or "production"
+	if (mode === "production")
+	{
+		return "" + endpoint;
+	}
+	else
+	{
+		return "http://localhost:8000/" + endpoint;
+	}
+
+}
+
 export const handleLogin = async (email, password) => {
 	const data = {
 		username: email,
 		password: password,
 	}
-	const res = await fetch('http://localhost:8000/auth', {
+	const res = await fetch(backend('auth'), {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

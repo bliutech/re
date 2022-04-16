@@ -1,2 +1,18 @@
+# System files
 .vs_code
 .DS_Store
+
+# Server files
+/venv
+__pycache__
+*.pyc
+*.pyo
+
+build/
+dist/
+
+# Database file
+data.db
+
+# Client files
+node_modules/
