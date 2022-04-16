@@ -3,15 +3,17 @@ import React from "react";
 export default function Profiles({ Data }) {
   return (
     <table id="profile">
-      <tr>
-        <th>Username</th>
-        <th>Landfill</th>
-        <th>Recycle</th>
-        <th>Compost</th>
-        <th>Special</th>
-        <th>Points</th>
-      </tr>
-      {Item(Data)}
+      <thead>
+        <tr>
+          <td>Username</td>
+          <td>Landfill</td>
+          <td>Recycle</td>
+          <td>Compost</td>
+          <td>Special</td>
+          <td>Points</td>
+        </tr>
+      </thead>
+      <tbody>{Item(Data)}</tbody>
     </table>
   );
 }
