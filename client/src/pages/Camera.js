@@ -13,16 +13,29 @@ export default function Camera()
     }, [videoRef]);
 
     const getVideo = () => {
-    navigator.mediaDevices
-        .getUserMedia({ video: { width: 300 } })
-        .then(stream => {
-        let video = videoRef.current;
-        video.srcObject = stream;
-        video.play();
-        })
-        .catch(err => {
-        console.error("error:", err);
-        });
+        navigator.mediaDevices
+            .getUserMedia({audio: false, video: {width: 300} })
+            .then(stream => {
+                let video = videoRef.current;
+                video.srcObject = stream;
+                // video.play();
+                // let playPromise = video.play();
+
+                // if (playPromise !== undefined)
+                // {
+                //     playPromise.then(_ => {
+
+                //         // video.pause();
+                //     })
+                //     .catch(error => 
+                //     {
+
+                //     });
+                // }
+            })
+            .catch(err => {
+                console.error("error:", err);
+            });
     };
 
     const paintToCanvas = () => {
