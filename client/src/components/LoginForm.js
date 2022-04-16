@@ -1,10 +1,11 @@
 import './LoginForm.css'
 import React, { useState } from 'react'
 import { handleLogin } from '../utils/endpoints'
-const LoginForm = ({ handler }) => {
+const LoginForm = ({ setUser }) => {
 	const [email, setEmail] = useState()
 	const [password, setPassword] = useState()
 	const [err, setErr] = useState('')
+
 	// TODO: set error message on screen
 	// TODO: abstract this and register form into 1
 	return (
@@ -12,13 +13,20 @@ const LoginForm = ({ handler }) => {
 			<form
 				className='sign-form'
 				id='sign-form'
-				onSubmit={(e) => {
+				onSubmit={async (e) => {
 					e.preventDefault()
 					let signForm = document.getElementById('sign-form')
 					let spinner = document.getElementById('spinner')
 					signForm.style.opacity = '0'
 					spinner.style.opacity = '1'
-					handleLogin(email, password)
+					let response = await handleLogin(email, password)
+					if (!response.error) {
+						response.username = email
+						response.password = password
+						console.log(response)
+						localStorage.setItem('user', JSON.stringify(response))
+						setUser(response)
+					}
 					spinner.style.opacity = '0'
 					signForm.style.opacity = '1'
 				}}

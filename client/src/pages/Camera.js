@@ -23,20 +23,20 @@ export default function Camera()
             .then(stream => {
                 let video = videoRef.current;
                 video.srcObject = stream;
-                // video.play();
-                let playPromise = video.play();
+                video.play();
+                // let playPromise = video.play();
 
-                if (playPromise !== undefined)
-                {
-                    playPromise.then(_ => {
+                // if (playPromise !== undefined)
+                // {
+                //     playPromise.then(_ => {
 
-                        // video.pause();
-                    })
-                    .catch(error => 
-                    {
+                //         // video.pause();
+                //     })
+                //     .catch(error => 
+                //     {
 
-                    });
-                }
+                //     });
+                // }
             })
             .catch(err => {
                 console.error("error:", err);
