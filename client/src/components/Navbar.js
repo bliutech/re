@@ -21,6 +21,9 @@ export default function Navbar() {
         <li>
           <Link to="/leaderboard">Leaderboard</Link>
         </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
       </ul>
     </header>
   );

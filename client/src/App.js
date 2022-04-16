@@ -8,6 +8,7 @@ import LoginRegister from "./pages/Login";
 import Camera from "./pages/Camera";
 import Error404 from "./pages/Error404";
 import Leaderboard from "./pages/Leaderboard";
+import About from "./pages/About";
 
 import Navbar from "./components/Navbar";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<LoginRegister />} />
         <Route path="/camera" element={<Camera />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
