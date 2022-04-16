@@ -41,7 +41,7 @@ Variables
 	--ff-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--transition: all 250ms ease;
-	--spacing: 0.25rem;
+	--spacing: 0.15rem;
 	--radius: 0.5rem;
 	--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 	--dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
