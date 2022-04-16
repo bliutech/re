@@ -1,5 +1,6 @@
-import React, {useEffect, useRef } from "react";
-import './styles.css'
+import React, {useEffect, useRef} from "react";
+import './styles.css';
+import { backend } from "../utils/endpoints";
 
 export default function Camera()
 {
@@ -9,8 +10,12 @@ export default function Camera()
     const colorRef = useRef(null);
 
     useEffect(() => {
-    getVideo();
+        getVideo();
+        // return () => {
+        //     videoRef.current.pause();
+        // }
     }, [videoRef]);
+
 
     const getVideo = () => {
         navigator.mediaDevices
@@ -18,7 +23,7 @@ export default function Camera()
             .then(stream => {
                 let video = videoRef.current;
                 video.srcObject = stream;
-                // video.play();
+                video.play();
                 // let playPromise = video.play();
 
                 // if (playPromise !== undefined)
@@ -74,16 +79,36 @@ export default function Camera()
         link.href = data;
         link.setAttribute("download", "myWebcam");
         link.innerHTML = `<img src='${data}' alt='thumbnail'/>`;
+        sendPhoto(data);
         strip.insertBefore(link, strip.firstChild);
     };
+
+    async function sendPhoto(data)
+    {
+        await fetch(
+            backend('image'),
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        )
+        .then(
+        )
+        .catch(error => {
+            return;
+        });
+    }
 
     return (
     <div className="container">
         <div ref={colorRef} className="scene">
-            <img
+            {/* <img
                 className="mountains"
                 src="https://i.ibb.co/RjYk1Ps/2817290-eps-1.png"
-            />
+            /> */}
             </div>
             <div className="webcam-video">
             <button onClick={() => takePhoto()}>Take a photo</button>
