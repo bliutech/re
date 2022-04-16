@@ -16,3 +16,6 @@ data.db
 
 # Client files
 node_modules/
+
+# Model files
+model/tests/
