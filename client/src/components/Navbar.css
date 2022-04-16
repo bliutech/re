@@ -105,7 +105,8 @@
 
 	.nav-link:hover {
 		padding: 0;
-		color: var(--clr-primary-8);
+		color: white;
 		background: transparent;
+		transform: scale(1.01);
 	}
 }
