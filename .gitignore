@@ -3,7 +3,7 @@
 .DS_Store
 
 # Server files
-/venv
+env/
 __pycache__
 *.pyc
 *.pyo
