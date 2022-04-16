@@ -1,14 +1,10 @@
-export function backend(endpoint){
-	const mode = "development" // "development or "production"
-	if (mode === "production")
-	{
-		return "" + endpoint;
+export function backend(endpoint) {
+	const mode = 'development' // "development or "production"
+	if (mode === 'production') {
+		return '' + endpoint
+	} else {
+		return 'http://localhost:8000/' + endpoint
 	}
-	else
-	{
-		return "http://localhost:8000/" + endpoint;
-	}
-
 }
 
 export const handleLogin = async (email, password) => {

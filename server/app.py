@@ -8,6 +8,10 @@ from flask_cors import CORS
 from db import db
 from resources.user import User
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
@@ -22,7 +26,6 @@ jwt = JWT(app, authenticate, identity)
 @app.before_first_request
 def create_tables():
     db.create_all()
-
 
 api.add_resource(User, "/register")
 

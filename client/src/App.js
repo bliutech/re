@@ -1,32 +1,41 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import React, { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import './App.css'
 
 // pages
-import Home from "./pages/Home";
-import LoginRegister from "./pages/Login";
-import Camera from "./pages/Camera";
-import Error404 from "./pages/Error404";
-import Leaderboard from "./pages/Leaderboard";
+
+import Home from './pages/Home'
+import LoginRegister from './pages/LoginRegister'
+import Camera from './pages/Camera'
+import Error404 from './pages/Error404'
+import ProtectedRoute from './components/ProtectedRoute'
+import Navbar from './components/Navbar'
 import About from "./pages/About";
 
-import Navbar from "./components/Navbar";
-
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<LoginRegister />} />
-        <Route path="/camera" element={<Camera />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+	const [user, setUser] = useState()
+	return (
+		<div className='App'>
+			{user ? <Navbar setUser={setUser} /> : null}
+			<Routes>
+				<Route
+					path='/'
+					element={<LoginRegister user={user} setUser={setUser} />}
+				/>
+				<Route
+					path='/home'
+					element={
+						<ProtectedRoute user={user}>
+							<Home />
+						</ProtectedRoute>
+					}
+				/>
+				<Route path='/camera' element={<Camera />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-    </div>
-  );
+				<Route path='*' element={<Error404 />} />
+			</Routes>
+		</div>
+	)
 }
 
 export default App;
