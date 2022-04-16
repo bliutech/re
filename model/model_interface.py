@@ -56,9 +56,9 @@ def normalize_output(output, top=3, display=True):
     return dict(zip(trash_labels, trash_confidence))
 
 
-def image_search():
+def image_search(img_path):
     # use test image (need to be replaced)
-    image_array = cv2.imread("tests/clothes_1.jpg")
+    image_array = cv2.imread(img_path)
     # get model raw output
     output = model(image_array, "models/model_0416_1135", process=True)
     # get output precentage (normalize to top n)
@@ -70,7 +70,7 @@ def image_search():
 
 
 def main():
-    image_search()
+    image_search("tests/bottle_1.jpg")
 
 
 if __name__=="__main__":

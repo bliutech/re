@@ -7,6 +7,7 @@ from flask_cors import CORS
 
 from db import db
 from resources.user import User
+from resources.cv import CV
 
 import os
 from dotenv import load_dotenv
@@ -28,6 +29,8 @@ def create_tables():
     db.create_all()
 
 api.add_resource(User, "/register")
+api.add_resource(CV, "/img")
+
 
 if __name__ == "__main__":
     db.init_app(app)
