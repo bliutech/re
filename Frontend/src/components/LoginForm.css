@@ -1,0 +1,105 @@
+.form-container {
+	position: relative;
+	background: hsla(151, 17%, 32%, 0.1);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	border-radius: 1rem;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	width: 80%;
+	max-height: 80%;
+	max-width: 442px;
+	transition: var(--transition);
+}
+
+.sign-form {
+	color: white;
+	font-weight: 700;
+	text-transform: capitalize;
+	padding: 10%;
+	letter-spacing: 0.2rem;
+	transition: var(--transition);
+}
+
+.sign-form h2 {
+	color: white;
+	font-weight: 700;
+	text-transform: capitalize;
+	margin-bottom: 0.5rem;
+}
+
+.line {
+	height: 0.25rem;
+	width: 6rem;
+	background: white;
+	margin-bottom: 2rem;
+}
+
+.sign-form-input {
+	color: #fff;
+	font-weight: 700;
+	font-size: 1rem;
+	padding: 1rem 1.5rem;
+	margin-bottom: 2rem;
+	border-radius: 2rem;
+	border: none;
+	background: rgba(255, 255, 255, 0.4);
+	width: 100%;
+	box-shadow: var(--dark-shadow);
+}
+
+.sign-form input::placeholder {
+	color: rgba(255, 255, 255, 0.6);
+	text-transform: capitalize;
+	letter-spacing: var(--spacing);
+	font-weight: 700;
+	font-size: 1rem;
+}
+
+input:focus {
+	outline: none;
+}
+
+.sign-btn {
+	background: var(--clr-primary-7);
+	transition: var(--transition);
+	box-shadow: var(--dark-shadow);
+	margin-bottom: 1rem;
+}
+
+.spinner {
+	position: absolute;
+	z-index: 1;
+	margin: 0;
+	top: calc(50% - 2rem);
+	left: calc(50% - 2rem);
+	border: 0.4rem solid var(--clr-primary-1); /* Light grey */
+	border-top: 0.4rem solid var(--clr-primary-7); /* Blue */
+	border-radius: 50%;
+	width: 4rem;
+	height: 4rem;
+	animation: spin 2s linear infinite;
+	opacity: 0;
+	transition: var(--transition);
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.forgot-pass {
+	display: block;
+	color: white;
+	font-weight: 400;
+	letter-spacing: 0.15rem;
+}
+
+.nav-register {
+	font-weight: 700;
+	text-decoration: underline;
+	cursor: pointer;
+}
