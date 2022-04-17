@@ -16,6 +16,25 @@ export default function Camera()
         // }
     }, [videoRef]);
 
+    // check for browser type to switch out the camera module
+
+    let userAgent = navigator.userAgent;
+         let browserName;
+         
+         if(userAgent.match(/chrome|chromium|crios/i)){
+             browserName = "chrome";
+           }else if(userAgent.match(/firefox|fxios/i)){
+             browserName = "firefox";
+           }  else if(userAgent.match(/safari/i)){
+             browserName = "safari";
+           }else if(userAgent.match(/opr\//i)){
+             browserName = "opera";
+           } else if(userAgent.match(/edg/i)){
+             browserName = "edge";
+           }else{
+             browserName="No browser detection";
+           }
+
 
     const getVideo = () => {
         navigator.mediaDevices
@@ -77,7 +96,7 @@ export default function Camera()
         console.warn(data);
         const link = document.createElement("a");
         link.href = data;
-        link.setAttribute("download", "myWebcam");
+        link.setAttribute("download", "trash");
         link.innerHTML = `<img src='${data}' alt='thumbnail'/>`;
         sendPhoto(data);
         strip.insertBefore(link, strip.firstChild);

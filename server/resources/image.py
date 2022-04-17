@@ -21,6 +21,14 @@ def decodeImage(data):
     decodeit.write(base64.b64decode((byte)))
     decodeit.close()
 
+
+## NEED TO ADD POINTS TO THE USER for recycling
+
+
+
+
+
+
 # if __name__ == '__main__':
 #     encodeImage('myWebcam.jpeg')
 #     file = open('myWebcam.jpeg.bin', 'rb')
@@ -38,8 +46,8 @@ class Image(Resource):
         ## input machine learning model here
         # {'plastic': ('recycle', 0.8807971), 'white-glass': ('recycle', 0.2798402), 'trash': ('landfill', 0.22779083)}
         output_list = image_search('trash.jpeg')
-        # if exists('trash.jpeg'):
-        #     os.rm('trash.jpeg')
+        if exists('trash.jpeg'):
+            os.remove('trash.jpeg')
         json_string = json.dumps(output_list)
         datastore = json.loads(json_string)
         return datastore, 200
