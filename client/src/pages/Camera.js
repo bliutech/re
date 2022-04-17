@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Camera.css';
 import { backend } from '../utils/endpoints';
 import { handleIncrement } from '../utils/endpoints';
@@ -10,38 +11,17 @@ export default function Camera() {
   const photoRef = useRef(null);
   const stripRef = useRef(null);
   const colorRef = useRef(null);
-  // window.onbeforeunload = () =>
-  // {
-  //     videoRef.current.stop();
-  // }
 
   useEffect(() => {
     getVideo();
   }, [videoRef]);
 
-  // check for browser type to switch out the camera module
-
-  let userAgent = navigator.userAgent;
-  let browserName;
-
-  if (userAgent.match(/chrome|chromium|crios/i)) {
-    browserName = "chrome";
-  } else if (userAgent.match(/firefox|fxios/i)) {
-    browserName = "firefox";
-  } else if (userAgent.match(/safari/i)) {
-    browserName = "safari";
-  } else if (userAgent.match(/opr\//i)) {
-    browserName = "opera";
-  } else if (userAgent.match(/edg/i)) {
-    browserName = "edge";
-  } else {
-    browserName = "No browser detection";
-  }
+  const navigate = useNavigate();
 
   const labelToText = {
     'battery': 'Battery',
     'biological': 'Biological',
-    'brown glass': 'Biological',
+    'brown-glass': 'Biological',
     'cardboard': 'Cardboard',
     'clothes': 'Clothes',
     'green-glass': 'Green glass',
@@ -50,7 +30,7 @@ export default function Camera() {
     'plastic': 'Plastic',
     'shoes': 'Shoes',
     'trash': 'Trash',
-    'white glass': 'White glass',
+    'white-glass': 'White glass',
   }
 
   const binToText = {
@@ -124,10 +104,11 @@ export default function Camera() {
 
   function handleClick() {
 		const category = data[0].bin;
-		user = JSON.parse(localStorage.getItem('user'));
+		let user = JSON.parse(localStorage.getItem('user'));
 
 		console.log(user['username']);
 		handleIncrement(user.username, category);
+    // navigate("/leaderboard");
 	}
   function byConfidence(a, b) {
     if (a.confidence > b.confidence) {
@@ -192,8 +173,9 @@ export default function Camera() {
         onClick={handleClick}
       >
         Submit Trash
-      </button>
+      </button><br/>
       <p id="trashDescription"></p>
       <br/><br/><br/>
     </div>
   );
+}

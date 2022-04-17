@@ -57,7 +57,7 @@ Global Styles
 }
 body {
 	font-family: var(--ff-primary);
-	background: var(--clr-white);
+	background: linear-gradient(hsla(155, 18%, 19%, 0.9), hsla(155, 18%, 19%, 0.9)), url(assets/Login-background.jpg);
 	color: var(--clr-primary-1);
 	line-height: 1.5;
 	font-size: 1.0rem;
