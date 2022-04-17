@@ -36,18 +36,19 @@ function App() {
 							path='/home'
 							element={
 								<ProtectedRoute user={user}>
-									<Home />
+									{/* <Home /> */}
+									<Camera />
 								</ProtectedRoute>
 							}
 						/>
-						<Route
+						{/* <Route
 							path='/recycle'
 							element={
 								<ProtectedRoute user={user}>
 									<Camera />
 								</ProtectedRoute>
 							}
-						/>
+						/> */}
 						<Route
 							path='/about'
 							element={
@@ -56,7 +57,12 @@ function App() {
 								</ProtectedRoute>
 							}
 						/>
-						<Route path='/leaderboard' element={<Leaderboard />} />
+						<Route path='/leaderboard' element={
+								<ProtectedRoute user={user}>
+									<Leaderboard />
+								</ProtectedRoute>
+							}
+						/>
 						<Route path='/profile/:username' element={<UserProfile />} />
 						<Route path='/profile' element={<Profile />} />
 						<Route path='*' element={<Error404 />} />
@@ -67,4 +73,4 @@ function App() {
 	)
 }
 
-export default App
+export default App;

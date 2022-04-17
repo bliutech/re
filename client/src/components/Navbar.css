@@ -21,14 +21,14 @@
 	justify-content: space-between;
 	-webkit-box-align: center;
 	align-items: center;
-	padding: 1rem 2rem;
+	padding: 1rem 5rem 0 0;
 }
 
 .nav-toggle {
 	background: transparent;
 	border: transparent;
 	cursor: pointer;
-	font-size: 1.5rem;
+	font-size: 1.0rem;
 	color: var(--clr-primary-1);
 	-webkit-transition: var(--transition);
 	transition: var(--transition);
@@ -41,14 +41,14 @@
 
 .nav-link {
 	display: block;
-	padding: 1rem 2rem;
+	padding: 1rem 2rem 0 0;
 	text-transform: capitalize;
 	letter-spacing: var(--spacing);
 	-webkit-transition: var(--transition);
 	transition: var(--transition);
 	color: var(--clr-primary-1);
 	cursor: pointer;
-	font-size: 1rem;
+	font-size: 1.25rem;
 }
 
 .nav-link:hover {
@@ -84,6 +84,7 @@
 		align-items: center;
 		flex-wrap: wrap;
 		margin-right: 1rem;
+		gap: 5rem;
 	}
 	.nav-links {
 		height: 2rem;

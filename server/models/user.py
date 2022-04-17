@@ -1,6 +1,4 @@
 from db import db
-
-
 class UserModel(db.Model):
 
     __tablename__ = "users"
@@ -39,6 +37,12 @@ class UserModel(db.Model):
     def find_user_by_username(cls, username):
         # This finds first instance where username = username of user in database
         return cls.query.filter_by(username=username).first()
+
+    @classmethod
+    def get_all_users(cls):
+        # This returns all users in database
+        return cls.query.filter_by().all()
+
 
     # This gets a user by their username
     @classmethod
