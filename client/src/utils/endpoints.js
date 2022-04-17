@@ -29,3 +29,26 @@ export const handleLogin = async (email, password) => {
 		return user
 	}
 }
+
+export const handleRegister = async (email, password) => {
+	const data = {
+		username: email,
+		password: password,
+	}
+	const res = await fetch(backend('register'), {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	if (res.status >= 400) {
+		return {
+			error: 'Incorrect username or password',
+		}
+	} else {
+		const user = await res.json()
+		console.log(user)
+		return user
+	}
+}
