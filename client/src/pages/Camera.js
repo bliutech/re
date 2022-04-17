@@ -1,5 +1,7 @@
-import React, {useEffect, useRef } from "react";
-import './styles.css'
+import React, {useEffect, useRef} from "react";
+import './styles.css';
+import { backend } from "../utils/endpoints";
+import Navbar from "../components/Navbar";
 
 export default function Camera()
 {
@@ -8,21 +10,59 @@ export default function Camera()
     const stripRef = useRef(null);
     const colorRef = useRef(null);
 
+    // window.onbeforeunload = () =>
+    // {
+    //     videoRef.current.stop();
+    // }
+
     useEffect(() => {
-    getVideo();
+        getVideo();
     }, [videoRef]);
 
+    // check for browser type to switch out the camera module
+
+    let userAgent = navigator.userAgent;
+         let browserName;
+         
+         if(userAgent.match(/chrome|chromium|crios/i)){
+             browserName = "chrome";
+           }else if(userAgent.match(/firefox|fxios/i)){
+             browserName = "firefox";
+           }  else if(userAgent.match(/safari/i)){
+             browserName = "safari";
+           }else if(userAgent.match(/opr\//i)){
+             browserName = "opera";
+           } else if(userAgent.match(/edg/i)){
+             browserName = "edge";
+           }else{
+             browserName="No browser detection";
+           }
+
+
     const getVideo = () => {
-    navigator.mediaDevices
-        .getUserMedia({ video: { width: 300 } })
-        .then(stream => {
-        let video = videoRef.current;
-        video.srcObject = stream;
-        video.play();
-        })
-        .catch(err => {
-        console.error("error:", err);
-        });
+        navigator.mediaDevices
+            .getUserMedia({audio: false, video: {width: 300} })
+            .then(stream => {
+                let video = videoRef.current;
+                video.srcObject = stream;
+                video.play();
+                // let playPromise = video.play();
+
+                // if (playPromise !== undefined)
+                // {
+                //     playPromise.then(_ => {
+
+                //         // video.pause();
+                //     })
+                //     .catch(error => 
+                //     {
+
+                //     });
+                // }
+            })
+            .catch(err => {
+                console.error("error:", err);
+            });
     };
 
     const paintToCanvas = () => {
@@ -59,18 +99,44 @@ export default function Camera()
         console.warn(data);
         const link = document.createElement("a");
         link.href = data;
-        link.setAttribute("download", "myWebcam");
+        link.setAttribute("download", "trash");
         link.innerHTML = `<img src='${data}' alt='thumbnail'/>`;
+        sendPhoto(data);
         strip.insertBefore(link, strip.firstChild);
     };
 
+    async function sendPhoto(data)
+    {
+        let send = {
+            image: data
+        }
+        let res = await fetch(
+            backend('image'),
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(send)
+            }
+        )
+        .then(
+
+        )
+        .catch(error => {
+            return;
+        });
+        console.log(await res.json());
+    }
+
     return (
     <div className="container">
+        <Navbar />
         <div ref={colorRef} className="scene">
-            <img
+            {/* <img
                 className="mountains"
                 src="https://i.ibb.co/RjYk1Ps/2817290-eps-1.png"
-            />
+            /> */}
             </div>
             <div className="webcam-video">
             <button onClick={() => takePhoto()}>Take a photo</button>
