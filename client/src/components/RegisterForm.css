@@ -9,6 +9,7 @@
 	max-height: 80%;
 	max-width: 442px;
 	transition: var(--transition);
+	animation: appear 1s ease;
 }
 
 .sign-form {
@@ -17,7 +18,15 @@
 	text-transform: capitalize;
 	padding: 10%;
 	letter-spacing: 0.2rem;
-	transition: var(--transition);
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .sign-form h2 {
@@ -98,8 +107,22 @@ input:focus {
 	letter-spacing: 0.15rem;
 }
 
-.nav-register {
+.nav-login {
 	font-weight: 700;
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+.register-page-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: hsla(155, 18%, 19%, 0.9);
+}
+.register-image {
+	background: url(../assets/Login-background.jpg);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }

@@ -4,11 +4,12 @@ import './App.css'
 
 // pages
 import Home from './pages/Home'
-import LoginRegister from './pages/LoginRegister'
+import LoginForm from './components/LoginForm'
 import Camera from './pages/Camera'
 import Error404 from './pages/Error404'
 import ProtectedRoute from './components/ProtectedRoute'
 import Navbar from './components/Navbar'
+import RegisterForm from './components/RegisterForm'
 
 function App() {
 	const [user, setUser] = useState()
@@ -16,9 +17,10 @@ function App() {
 		<div className='App'>
 			{user ? <Navbar setUser={setUser} /> : null}
 			<Routes>
+				<Route path='/' element={<LoginForm user={user} setUser={setUser} />} />
 				<Route
-					path='/'
-					element={<LoginRegister user={user} setUser={setUser} />}
+					path='/register'
+					element={<RegisterForm user={user} setUser={setUser} />}
 				/>
 				<Route
 					path='/home'
@@ -35,4 +37,4 @@ function App() {
 	)
 }
 
-export default App;
+export default App
