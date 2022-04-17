@@ -26,3 +26,26 @@ class User(Resource):
 class UserList(Resource):
     def get(self):
         return {"users": [x.json() for x in UserModel.query.all()]}
+
+
+class UserTrash(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument("category", type=str, required=True, help="Category required")
+    parser.add_argument("username", type=str, required=True, help="user required")
+
+    def post(self):
+        data = UserTrash.parser.parse_args()
+
+        user = UserModel.find_user_by_username(data["username"])
+
+        category = data["category"]
+        if category == "landfill":
+            user.increment_landfill()
+        elif category == "recycle":
+            user.increment_recycle()
+        elif category == "compost":
+            user.increment_compost()
+        elif category == "special":
+            user.increment_special()
+
+        return {"message": "increment"}, 200

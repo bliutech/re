@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import './Camera.css'
 import { backend } from '../utils/endpoints'
 import Navbar from '../components/Navbar'
+import { handleIncrement } from '../utils/endpoints'
 
-export default function Camera() {
+export default function Camera({ user }) {
 	const [data, setData] = useState()
 
 	const videoRef = useRef(null)
@@ -115,7 +116,11 @@ export default function Camera() {
 	}
 
 	function handleClick() {
-		//add code for post request, need user and most likely type
+		const category = data[0].bin
+		user = JSON.parse(localStorage.getItem('user'))
+
+		console.log(user['username'])
+		handleIncrement(user.username, category)
 	}
 	function byConfidence(a, b) {
 		if (a.confidence > b.confidence) {
@@ -156,7 +161,7 @@ export default function Camera() {
 		} and is of type ${formattedMLData[0].bin}. Re has a ${
 			formattedMLData[0].confidence / 100
 		}% confidence rating.</p>`
-		setData(MLdata)
+		setData(formattedMLData)
 	}
 
 	return (

@@ -56,7 +56,7 @@
 .nav-link:hover {
 	color: var(--clr-primary-1);
 	background: var(--clr-primary);
-	padding-left: 2.25rem;
+	padding-left: 0.5rem;
 }
 
 .nav-links {
