@@ -85,21 +85,26 @@ export default function Camera()
 
     async function sendPhoto(data)
     {
-        await fetch(
+        let send = {
+            image: data
+        }
+        let res = await fetch(
             backend('image'),
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(send)
             }
         )
         .then(
+
         )
         .catch(error => {
             return;
         });
+        console.log(await res.json());
     }
 
     return (

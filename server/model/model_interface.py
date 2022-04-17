@@ -1,8 +1,7 @@
 from xml.dom import NOT_FOUND_ERR
-import cv2
+import cv2 as compvision
 import numpy as np
-from model import model
-
+from model.model import *
 
 # Source: CalRecycle
 label_to_trash = {
@@ -58,20 +57,20 @@ def normalize_output(output, top=3, display=True):
 
 def image_search(img_path):
     # use test image (need to be replaced)
-    image_array = cv2.imread(img_path)
+    image_array = compvision.imread(img_path)
     # get model raw output
-    output = model(image_array, "models/model_0416_1135", process=True)
+    output = model_run(image_array, "model/models/model_0416_1135", process=True)
     # get output precentage (normalize to top n)
-    output_trash = normalize_output(output, top=3, display=True)
+    output_trash = normalize_output(output, top=3, display=False)
     # get trash type
     for trash, confidence in output_trash.items():
-        output_trash[trash] = (trash_type(trash), confidence)
+        output_trash[trash] = (trash_type(trash), int(10000*confidence))
     return output_trash
 
 
-def main():
-    image_search("tests/bottle_1.jpg")
+# def main():
+#     image_search("tests/bottle_1.jpg")
 
 
-if __name__=="__main__":
-    main()
+# if __name__=="__main__":
+#     main()

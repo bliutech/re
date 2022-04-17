@@ -75,7 +75,7 @@ def pre_process(input_, resize=64):
     return input_
 
 
-def model(input_, model_path, process=True):
+def model_run(input_, model_path, process=True):
 
     if process:
         input_ = pre_process(input_)
