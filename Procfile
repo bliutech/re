@@ -1,0 +1,1 @@
+web: sh -c 'cd ./server/ && uwsgi uwsgi.ini'
