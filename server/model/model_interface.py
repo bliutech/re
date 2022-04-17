@@ -59,7 +59,7 @@ def image_search(img_path):
     # use test image (need to be replaced)
     image_array = compvision.imread(img_path)
     # get model raw output
-    output = model_run(image_array, "model/models/model_0416_1135", process=True)
+    output = model_run(image_array, "model/models/model_0416_1942", process=True)
     # get output precentage (normalize to top n)
     output_trash = normalize_output(output, top=3, display=False)
     # get trash type
