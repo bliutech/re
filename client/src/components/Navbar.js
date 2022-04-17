@@ -4,6 +4,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
 import 'font-awesome/css/font-awesome.min.css'
 import { Link } from 'react-router-dom'
+
+
 export default function Navbar({ setUser }) {
 	const [isActive, setActive] = useState(false)
 	const navBtn = document.getElementById('nav-toggle')
