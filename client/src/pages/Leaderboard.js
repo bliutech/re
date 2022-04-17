@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Profiles from "../components/Profiles";
 //import axios from "axios";
 
 export default function Leaderboard() {
-  let data = [
+  let leaderboardData = [
     {
       username: "benson",
       landfill: 1,
@@ -29,22 +29,18 @@ export default function Leaderboard() {
       points: 3,
     },
   ];
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8000/api/leaderboard") // whatever the url is
-  //     .then((response) => {
-  //       console.log("SUCCESS", response);
-  //       setData(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // GET request using fetch inside useEffect React hook
+    fetch("https://localhost:8000/leaderboard")
+      .then((response) => response.json())
+      .then((data) => (leaderboardData = data));
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
 
   return (
     <div className="board">
       <h1 className="leaderboard">Leaderboard</h1>
-      <Profiles Data={data}></Profiles>
+      <Profiles Data={leaderboardData}></Profiles>
     </div>
   );
 }
