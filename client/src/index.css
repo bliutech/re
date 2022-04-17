@@ -80,6 +80,21 @@ img:not(.nav-logo) {
   width: 100%;
   display: block;
 } */
+button {
+  background: transparent;
+  color: var(--clr-primary-1);
+  font-size: 1.0rem;
+  font-family: var(--ff-primary);
+  border-style: solid;
+  border-color: var(--clr-primary-1);
+  border-width: 0.1rem;
+  border-radius: 0.25rem;
+  margin: 0.5rem 0 0 0;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+}
+button:hover {
+  background: var(--clr-grey-3);
+}
 
 h1,
 h2,
@@ -106,7 +121,7 @@ h4 {
 p {
   font-size: 1.0rem;
 	margin-bottom: 1.25rem;
-	color: var(--clr-grey-5);
+	color: var(--clr-primary-1);
 }
 
 /*  global classes */
