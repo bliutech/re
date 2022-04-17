@@ -53,11 +53,14 @@ function App() {
 				/>
 				<Route path='/leaderboard' element={<Leaderboard />} />
 				<Route path='/profile/:username' element={<UserProfile />} />
-				<Route path='/profile' element={<Profile />} />
+				 <Route
+          path="/profile"
+          element={<Profile user={user} setUser={setUser} />}
+        />
 				<Route path='*' element={<Error404 />} />
 			</Routes>
 		</div>
 	)
 }
 
-export default App
+export default App;
