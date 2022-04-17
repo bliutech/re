@@ -39,8 +39,6 @@ const LoginForm = ({ user, setUser }) => {
 							spinner.style.opacity = '1'
 							let response = await handleLogin(email, password)
 							if (!response.error) {
-								response.username = email
-								response.password = password
 								console.log(response)
 								localStorage.setItem('user', JSON.stringify(response))
 								setUser(response)

@@ -1,5 +1,5 @@
 from security import authenticate, identity
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Api
 from security import authenticate, identity
 from flask_jwt import JWT
@@ -28,6 +28,14 @@ jwt = JWT(app, authenticate, identity)
 @app.before_first_request
 def create_tables():
     db.create_all()
+
+
+@jwt.auth_response_handler
+def customized_response_handler(access_token, identity):
+    resp = {"access_token": access_token.decode("utf-8")}
+    resp.update(identity.json())
+    return jsonify(resp)
+
 
 api.add_resource(User, "/register")
 api.add_resource(Image, "/image")
