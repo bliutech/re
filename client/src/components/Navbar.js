@@ -41,7 +41,7 @@ export default function Navbar({ setUser }) {
 								home
 							</Link>
 						</li>
-						<li
+						{/* <li
 							onClick={() => {
 								setActive(!isActive)
 							}}
@@ -49,7 +49,7 @@ export default function Navbar({ setUser }) {
 							<Link to='/recycle' className='nav-link scroll-link'>
 								recycle
 							</Link>
-						</li>
+						</li> */}
 						<li
 							onClick={() => {
 								setActive(!isActive)

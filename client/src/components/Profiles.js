@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './Profile.css';
 
 export default function Profiles() {
   const [data, setData] = useState([]);
@@ -15,12 +16,12 @@ export default function Profiles() {
     <table id="profile">
       <thead>
         <tr>
-          <td>Username</td>
-          <td>Landfill</td>
-          <td>Recycle</td>
-          <td>Compost</td>
-          <td>Special</td>
-          <td>Points</td>
+          <td className="mobile"><b>Username</b></td>
+          <td className="mobile"><b>Points</b></td>
+          <td className="desktop"><b>Landfill</b></td>
+          <td className="desktop"><b>Recycle</b></td>
+          <td className="desktop"><b>Compost</b></td>
+          <td className="desktop"><b>Special</b></td>
         </tr>
       </thead>
       <tbody>{Item(data)}</tbody>
@@ -37,17 +38,17 @@ function byPoints(a, b) {
   }
 }
 function Item(data) {
-  data.sort(byPoints);
+  data?.sort(byPoints);
   return (
     <>
-      {data.map((value, index) => (
+      {data?.map((value, index) => (
         <tr className="item" key={index}>
-          <td className="info">{value.username}</td>
-          <td className="info">{value.landfill}</td>
-          <td className="info">{value.recycle}</td>
-          <td className="info">{value.compost}</td>
-          <td className="info">{value.special}</td>
-          <td className="info">{value.points}</td>
+          <td className="mobile info">{value.username}</td>
+          <td className="mobile info">{value.points? value.points : 0}</td>
+          <td className="desktop info">{value.landfill}</td>
+          <td className="desktop info">{value.recycle}</td>
+          <td className="desktop info">{value.compost}</td>
+          <td className="desktop info">{value.special}</td>
         </tr>
       ))}
     </>
