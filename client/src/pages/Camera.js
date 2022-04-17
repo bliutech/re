@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./styles.css";
 import { backend } from "../utils/endpoints";
 import Navbar from "../components/Navbar";
 
 export default function Camera() {
-  const [count, setCount] = useState(0);
   const videoRef = useRef(null);
   const photoRef = useRef(null);
   const stripRef = useRef(null);
