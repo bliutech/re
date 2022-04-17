@@ -1,6 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-const GlobalStyles = createGlobalStyle`
 /*
 =============== 
 Variables
@@ -38,8 +37,7 @@ Variables
 	--clr-grey-9: hsl(212, 33%, 89%);
 	--clr-grey-10: hsl(210, 36%, 96%);
 	--clr-white: #fff;
-	--ff-primary: 'Lato', sans-serif;,
-		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--ff-primary: 'Plus Jakarta Sans', 'Lato', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
 	--transition: all 250ms ease;
 	--spacing: 0.15rem;
 	--radius: 0.5rem;
@@ -60,15 +58,19 @@ Global Styles
 body {
 	font-family: var(--ff-primary);
 	background: var(--clr-white);
-	color: var(--clr-grey-1);
+	color: var(--clr-primary-1);
 	line-height: 1.5;
-	font-size: 0.875rem;
+	font-size: 1.0rem;
+  font-weight: 500;
 }
 ul {
 	list-style-type: none;
 }
 a {
 	text-decoration: none;
+}
+b {
+  font-weight: 800;
 }
 img:not(.nav-logo) {
 	width: 100%;
@@ -90,17 +92,19 @@ h4 {
 }
 h1 {
 	font-size: 3rem;
+  font-weight: 800;
 }
 h2 {
 	font-size: 2rem;
 }
 h3 {
-	font-size: 1.25rem;
+	font-size: 1.5rem;
 }
 h4 {
-	font-size: 0.875rem;
+	font-size: 1.25rem;
 }
 p {
+  font-size: 1.0rem;
 	margin-bottom: 1.25rem;
 	color: var(--clr-grey-5);
 }
@@ -128,5 +132,4 @@ p {
 	font-weight: 700;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 	border-radius: 1rem;
-}`
-export default GlobalStyles
+}
