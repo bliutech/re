@@ -6,7 +6,7 @@ from flask_jwt import JWT
 from flask_cors import CORS
 
 from db import db
-from resources.user import User, UserList
+from resources.user import User, UserList, UserTrash
 from resources.getUser import GetUser
 from resources.leaderboard import Leaderboard
 from resources.image import Image
@@ -28,11 +28,14 @@ jwt = JWT(app, authenticate, identity)
 def create_tables():
     db.create_all()
 
+
 api.add_resource(User, "/register")
 api.add_resource(Image, "/image")
 api.add_resource(GetUser, "/user/<string:name>")
 api.add_resource(UserList, "/users")
 api.add_resource(Leaderboard, "/leaderboard")
+api.add_resource(UserTrash, "/points")
+
 
 @jwt.auth_response_handler
 def customized_response_handler(access_token, identity):
@@ -44,4 +47,3 @@ def customized_response_handler(access_token, identity):
 if __name__ == "__main__":
     db.init_app(app)
     app.run(port=8000, debug=True)
-

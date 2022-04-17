@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Camera.css";
-import { backend } from "../utils/endpoints";
+import React, { useState, useEffect, useRef } from 'react';
+import './Camera.css';
+import { backend } from '../utils/endpoints';
+import { handleIncrement } from '../utils/endpoints';
 
 export default function Camera() {
   const [data, setData] = useState();
@@ -122,8 +123,12 @@ export default function Camera() {
   }
 
   function handleClick() {
-    //add code for post request, need user and most likely type
-  }
+		const category = data[0].bin;
+		user = JSON.parse(localStorage.getItem('user'));
+
+		console.log(user['username']);
+		handleIncrement(user.username, category);
+	}
   function byConfidence(a, b) {
     if (a.confidence > b.confidence) {
       return -1;
@@ -163,7 +168,7 @@ export default function Camera() {
       [${formattedMLData[1].confidence / 100}%] (${labelToText[formattedMLData[1].type]}) <b>${binToText[formattedMLData[1].bin]}</b><br/>
       [${formattedMLData[2].confidence / 100}%] (${labelToText[formattedMLData[2].type]}) <b>${binToText[formattedMLData[2].bin]}</b><br/>
     `;
-    setData(MLdata);
+    setData(formattedMLData);
   }
 
   return (

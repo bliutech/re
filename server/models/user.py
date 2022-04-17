@@ -1,4 +1,6 @@
 from db import db
+
+
 class UserModel(db.Model):
 
     __tablename__ = "users"
@@ -29,7 +31,7 @@ class UserModel(db.Model):
             "recycle": self.recycle,
             "compost": self.compost,
             "special": self.special,
-            "recycle_count": self.points,
+            "points": self.points,
         }
 
     # This gets a user by their username
@@ -42,7 +44,6 @@ class UserModel(db.Model):
     def get_all_users(cls):
         # This returns all users in database
         return cls.query.filter_by().all()
-
 
     # This gets a user by their username
     @classmethod
@@ -64,21 +65,25 @@ class UserModel(db.Model):
     def increment_landfill(self):
         self.landfill += 1
         self.add_to_points()
+        self.save_to_db()
 
     # increment recycle
     def increment_recycle(self):
         self.recycle += 1
         self.add_to_points()
+        self.save_to_db()
 
     # increment compost
     def increment_compost(self):
         self.compost += 1
         self.add_to_points()
+        self.save_to_db()
 
     # increment compost
     def increment_special(self):
         self.special += 1
         self.add_to_points()
+        self.save_to_db()
 
     def add_to_points(self):
         self.points = self.landfill * 1 + self.recycle * 10 + self.compost * 5 + self.special * 1

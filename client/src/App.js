@@ -44,7 +44,7 @@ function App() {
 							path='/recycle'
 							element={
 								<ProtectedRoute user={user}>
-									<Camera />
+									<Camera user={user} />
 								</ProtectedRoute>
 							}
 						/>

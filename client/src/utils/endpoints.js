@@ -52,3 +52,27 @@ export const handleRegister = async (email, password) => {
 		return user
 	}
 }
+
+export const handleIncrement = async (name, category) => {
+	const data = {
+		username: name,
+		category: category,
+	}
+	console.log(data)
+	const res = await fetch(backend('points'), {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+	if (res.status >= 400) {
+		return {
+			error: 'Increment Failed',
+		}
+	} else {
+		const user = await res.json()
+		console.log(user)
+		return user
+	}
+}
