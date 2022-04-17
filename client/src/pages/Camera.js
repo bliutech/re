@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "./styles.css";
+import "./Camera.css";
 import { backend } from "../utils/endpoints";
 import Navbar from "../components/Navbar";
 
 export default function Camera() {
+  const [data, setData] = useState();
+
   const videoRef = useRef(null);
   const photoRef = useRef(null);
   const stripRef = useRef(null);
@@ -94,22 +98,37 @@ export default function Camera() {
     }, 200);
   };
 
-  const takePhoto = () => {
+  async function takePhoto() {
     let photo = photoRef.current;
     let strip = stripRef.current;
+    let photo_url = photo.toDataURL("image/jpeg");
 
-    const data = photo.toDataURL("image/jpeg");
-
-    console.warn(data);
-    const link = document.createElement("a");
-    link.href = data;
+    const link = document.querySelector("#recentPhoto");
+    link.href = photo_url;
     link.setAttribute("download", "trash");
-    link.innerHTML = `<img src='${data}' alt='thumbnail'/>`;
-    sendPhoto(data);
-    strip.insertBefore(link, strip.firstChild);
-  };
+    const button = document.querySelector(".submit");
+    button.style.display = "";
+    sendPhoto(photo_url);
+    link.innerHTML = `<img id="photoTaken" src='${photo_url}' alt='thumbnail'/>`;
 
+    strip.insertBefore(link, strip.firstChild);
+    //setData(photo_url);
+  }
+
+  function handleClick() {
+    //add code for post request, need user and most likely type
+  }
+  function byConfidence(a, b) {
+    if (a.confidence > b.confidence) {
+      return -1;
+    } else if (b.confidence > a.confidence) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
   async function sendPhoto(data) {
+    let MLdata = {};
     let send = {
       image: data,
     };
@@ -124,7 +143,21 @@ export default function Camera() {
       .catch((error) => {
         return;
       });
-    console.log(await res.json());
+    MLdata = await res.json();
+    let formattedMLData = [];
+    Object.entries(MLdata).forEach((entry) => {
+      const [key, value] = entry;
+      formattedMLData.push({ type: key, bin: value[0], confidence: value[1] });
+    });
+    formattedMLData.sort(byConfidence);
+    console.log(formattedMLData);
+    const description = document.querySelector("#trashDescription");
+    description.innerHTML = `<p>According to our model, your trash is ${
+      formattedMLData[0].type
+    } and is of type ${formattedMLData[0].bin}. Re has a ${
+      formattedMLData[0].confidence / 100
+    }% confidence rating.</p>`;
+    setData(MLdata);
   }
 
   return (
@@ -143,9 +176,19 @@ export default function Camera() {
           ref={videoRef}
           className="player"
         />
-        <canvas ref={photoRef} className="photo" />
+        <canvas style={{ display: "none" }} ref={photoRef} className="photo" />
         <div className="photo-booth">
-          <div ref={stripRef} className="strip" />
+          <div ref={stripRef} className="strip">
+            <a id="recentPhoto"></a>
+            <button
+              className="submit"
+              style={{ display: "none" }}
+              onClick={handleClick}
+            >
+              Submit Trash
+            </button>
+            <p id="trashDescription"></p>
+          </div>
         </div>
       </div>
     </div>
