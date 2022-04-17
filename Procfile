@@ -1,1 +1,1 @@
-web: sh -c 'cd ./server/ && uwsgi uwsgi.ini'
+web: sh -c 'cd ./server/ && python3 app.py'
