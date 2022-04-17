@@ -83,11 +83,13 @@
 		-webkit-box-align: center;
 		align-items: center;
 		flex-wrap: wrap;
+		margin-right: 1rem;
 	}
 	.nav-links {
 		height: 2rem;
 		display: -webkit-box;
 		display: flex;
+		gap: 1rem;
 	}
 
 	.nav-header {
