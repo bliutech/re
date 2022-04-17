@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 const LoginForm = ({ user, setUser }) => {
 	const [email, setEmail] = useState()
 	const [password, setPassword] = useState()
-	const [err, setErr] = useState('')
+	const [err, setErr] = useState()
 
 	const navigate = useNavigate()
 
@@ -45,6 +45,7 @@ const LoginForm = ({ user, setUser }) => {
 							}
 							spinner.style.opacity = '0'
 							signForm.style.opacity = '1'
+							setErr(response.error)
 						}}
 					>
 						<h2>Sign In</h2>
@@ -64,6 +65,9 @@ const LoginForm = ({ user, setUser }) => {
 							className='sign-form-input'
 						/>
 						<input type='submit' className='btn sign-btn' />
+						<p className='err' id='err'>
+							{err ? err : null}
+						</p>
 						<p className='forgot-pass'>
 							Don't have an account{' '}
 							<span
