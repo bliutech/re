@@ -2,14 +2,19 @@ import React from 'react'
 import './About.css'
 export default function About() {
 	return (
-		<>
-			<h1>Re - Recycling Elevated</h1>
-			<p>
-				Ever walked over to the recycling/garbage bins before realizing that you
-				don't actually know which one to throw your trash in? Instead of
-				randomly choosing whichever bin seems the most logical, use <b>Re</b> to
-				help you figure out where to throw out your trash.
-			</p>
+		<div className='about-container'>
+			<div className='element-1'>
+				<h1 className='first'>Recycling </h1>
+				<h1 className='second'>Elevated</h1>
+			</div>
+			<div className='element-2'>
+				<p>
+					Ever walked over to the recycling/garbage bins before realizing that
+					you don't actually know which one to throw your trash in? Instead of
+					randomly choosing whichever bin seems the most logical, use <b>Re</b>{' '}
+					to help you figure out where to throw out your trash.{' '}
+				</p>
+			</div>
 			<h5>So how does Re work?</h5>
 			<ul>
 				<li>
@@ -30,6 +35,6 @@ export default function About() {
 				<li>Ming Zhu</li>
 				<li>Henry Wang</li>
 			</ul>
-		</>
+		</div>
 	)
 }

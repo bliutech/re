@@ -19,46 +19,50 @@ import Camera from './pages/Camera'
 function App() {
 	const [user, setUser] = useState()
 	return (
-		<div className='App'>
-			{user ? <Navbar setUser={setUser} /> : null}
-			<Routes>
-				<Route path='/' element={<LoginForm user={user} setUser={setUser} />} />
-				<Route
-					path='/register'
-					element={<RegisterForm user={user} setUser={setUser} />}
-				/>
-				<Route
-					path='/home'
-					element={
-						<ProtectedRoute user={user}>
-							<Home />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path='/recycle'
-					element={
-						<ProtectedRoute user={user}>
-							<Camera />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path='/about'
-					element={
-						<ProtectedRoute user={user}>
-							<About />
-						</ProtectedRoute>
-					}
-				/>
-				<Route path='/leaderboard' element={<Leaderboard />} />
-				<Route path='/profile/:username' element={<UserProfile />} />
-				 <Route
-          path="/profile"
-          element={<Profile user={user} setUser={setUser} />}
-        />
-				<Route path='*' element={<Error404 />} />
-			</Routes>
+		<div className='background-image'>
+			<div className='background-container'>
+				<div className='App'>
+					{user ? <Navbar setUser={setUser} /> : null}
+					<Routes>
+						<Route
+							path='/'
+							element={<LoginForm user={user} setUser={setUser} />}
+						/>
+						<Route
+							path='/register'
+							element={<RegisterForm user={user} setUser={setUser} />}
+						/>
+						<Route
+							path='/home'
+							element={
+								<ProtectedRoute user={user}>
+									<Home />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path='/recycle'
+							element={
+								<ProtectedRoute user={user}>
+									<Camera />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path='/about'
+							element={
+								<ProtectedRoute user={user}>
+									<About />
+								</ProtectedRoute>
+							}
+						/>
+						<Route path='/leaderboard' element={<Leaderboard />} />
+						<Route path='/profile/:username' element={<UserProfile />} />
+						<Route path='/profile' element={<Profile />} />
+						<Route path='*' element={<Error404 />} />
+					</Routes>
+				</div>
+			</div>
 		</div>
 	)
 }

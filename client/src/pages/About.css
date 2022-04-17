@@ -1,3 +1,47 @@
-h1 {
+.description-container {
+	justify-content: center;
+}
+
+.element-1 {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url('../assets/pexels-mali-maeder-802221.jpg') center/cover;
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.first,
+.second {
+	animation: appear 1s ease;
+}
+.first::first-letter {
 	color: var(--clr-primary-7);
+	animation: appear 1s ease;
+}
+
+.second::first-letter {
+	align-self: center;
+	color: var(--clr-primary-7);
+}
+
+.element-2 {
+	margin: 0 auto;
+	width: 90vw;
+	font-size: 2rem;
+}
+
+.element-2 p {
+	color: var(--clr-primary-1);
 }
