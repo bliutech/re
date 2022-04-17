@@ -2,6 +2,7 @@
 	width: 100%;
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(20px);
+	padding: 0 1rem;
 }
 
 .nav-icons {
@@ -28,10 +29,11 @@
 	background: transparent;
 	border: transparent;
 	cursor: pointer;
-	font-size: 1.0rem;
+	font-size: 1.5rem;
 	color: var(--clr-primary-1);
 	-webkit-transition: var(--transition);
 	transition: var(--transition);
+	padding: 1rem 1rem;
 }
 
 .nav-toggle:hover {
