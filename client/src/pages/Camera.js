@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import './styles.css';
 import { backend } from "../utils/endpoints";
+import Navbar from "../components/Navbar";
 
 export default function Camera()
 {
@@ -9,11 +10,13 @@ export default function Camera()
     const stripRef = useRef(null);
     const colorRef = useRef(null);
 
+    // window.onbeforeunload = () =>
+    // {
+    //     videoRef.current.stop();
+    // }
+
     useEffect(() => {
         getVideo();
-        // return () => {
-        //     videoRef.current.pause();
-        // }
     }, [videoRef]);
 
     // check for browser type to switch out the camera module
@@ -128,6 +131,7 @@ export default function Camera()
 
     return (
     <div className="container">
+        <Navbar />
         <div ref={colorRef} className="scene">
             {/* <img
                 className="mountains"

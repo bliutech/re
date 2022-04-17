@@ -37,7 +37,7 @@ function App() {
 						</ProtectedRoute>
 					}
 				/>
-				<Route path='/camera' element={<Camera />} />
+				<Route path='/recycle' element={<Camera />} />
         <Route path="/about" element={<About />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile/:username" element={<UserProfile />} />
