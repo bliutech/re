@@ -1,52 +1,52 @@
-import React, { useState, useEffect, useRef } from 'react'
-import './Camera.css'
-import { backend } from '../utils/endpoints'
-import Navbar from '../components/Navbar'
-import { handleIncrement } from '../utils/endpoints'
+import React, { useState, useEffect, useRef } from 'react';
+import './Camera.css';
+import { backend } from '../utils/endpoints';
+import Navbar from '../components/Navbar';
+import { handleIncrement } from '../utils/endpoints';
 
 export default function Camera({ user }) {
-	const [data, setData] = useState()
+	const [data, setData] = useState();
 
-	const videoRef = useRef(null)
-	const photoRef = useRef(null)
-	const stripRef = useRef(null)
-	const colorRef = useRef(null)
+	const videoRef = useRef(null);
+	const photoRef = useRef(null);
+	const stripRef = useRef(null);
+	const colorRef = useRef(null);
 	// window.onbeforeunload = () =>
 	// {
 	//     videoRef.current.stop();
 	// }
 
 	useEffect(() => {
-		getVideo()
-	}, [videoRef])
+		getVideo();
+	}, [videoRef]);
 
 	// check for browser type to switch out the camera module
 
-	let userAgent = navigator.userAgent
-	let browserName
+	let userAgent = navigator.userAgent;
+	let browserName;
 
 	if (userAgent.match(/chrome|chromium|crios/i)) {
-		browserName = 'chrome'
+		browserName = 'chrome';
 	} else if (userAgent.match(/firefox|fxios/i)) {
-		browserName = 'firefox'
+		browserName = 'firefox';
 	} else if (userAgent.match(/safari/i)) {
-		browserName = 'safari'
+		browserName = 'safari';
 	} else if (userAgent.match(/opr\//i)) {
-		browserName = 'opera'
+		browserName = 'opera';
 	} else if (userAgent.match(/edg/i)) {
-		browserName = 'edge'
+		browserName = 'edge';
 	} else {
-		browserName = 'No browser detection'
+		browserName = 'No browser detection';
 	}
 
 	const getVideo = () => {
 		navigator.mediaDevices
 			.getUserMedia({ audio: false, video: { width: 300 } })
 			.then((stream) => {
-				window.localStream = stream
-				let video = videoRef.current
-				video.srcObject = stream
-				video.play()
+				window.localStream = stream;
+				let video = videoRef.current;
+				video.srcObject = stream;
+				video.play();
 
 				// let playPromise = video.play();
 
@@ -63,79 +63,79 @@ export default function Camera({ user }) {
 				// }
 			})
 			.catch((err) => {
-				console.error('error:', err)
-			})
-	}
+				console.error('error:', err);
+			});
+	};
 
-	;(function (history) {
-		var pushState = history.pushState
+	(function (history) {
+		var pushState = history.pushState;
 		history.pushState = function (state) {
-			let video = videoRef.current
-			window.localStream.getVideoTracks()[0].stop()
-			video.src = ''
-			return pushState.apply(history, arguments)
-		}
-	})(window.history)
+			let video = videoRef.current;
+			window.localStream.getVideoTracks()[0].stop();
+			video.src = '';
+			return pushState.apply(history, arguments);
+		};
+	})(window.history);
 
 	const paintToCanvas = () => {
-		let video = videoRef.current
-		let photo = photoRef.current
-		let ctx = photo.getContext('2d')
+		let video = videoRef.current;
+		let photo = photoRef.current;
+		let ctx = photo.getContext('2d');
 
-		const width = 320
-		const height = 240
-		photo.width = width
-		photo.height = height
+		const width = 320;
+		const height = 240;
+		photo.width = width;
+		photo.height = height;
 
 		return setInterval(() => {
-			let color = colorRef.current
+			let color = colorRef.current;
 
-			ctx.drawImage(video, 0, 0, width, height)
-			let pixels = ctx.getImageData(0, 0, width, height)
+			ctx.drawImage(video, 0, 0, width, height);
+			let pixels = ctx.getImageData(0, 0, width, height);
 
-			color.style.backgroundColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`
-			color.style.borderColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`
-		}, 200)
-	}
+			color.style.backgroundColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`;
+			color.style.borderColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`;
+		}, 200);
+	};
 
 	async function takePhoto() {
-		let photo = photoRef.current
-		let strip = stripRef.current
-		let photo_url = photo.toDataURL('image/jpeg')
+		let photo = photoRef.current;
+		let strip = stripRef.current;
+		let photo_url = photo.toDataURL('image/jpeg');
 
-		const link = document.querySelector('#recentPhoto')
-		link.href = photo_url
-		link.setAttribute('download', 'trash')
-		const button = document.querySelector('.submit')
-		button.style.display = ''
-		sendPhoto(photo_url)
-		link.innerHTML = `<img id="photoTaken" src='${photo_url}' alt='thumbnail'/>`
+		const link = document.querySelector('#recentPhoto');
+		link.href = photo_url;
+		link.setAttribute('download', 'trash');
+		const button = document.querySelector('.submit');
+		button.style.display = '';
+		sendPhoto(photo_url);
+		link.innerHTML = `<img id="photoTaken" src='${photo_url}' alt='thumbnail'/>`;
 
-		strip.insertBefore(link, strip.firstChild)
+		strip.insertBefore(link, strip.firstChild);
 		//setData(photo_url);
 	}
 
 	function handleClick() {
-		const category = data[0].bin
-		user = JSON.parse(localStorage.getItem('user'))
+		const category = data[0].bin;
+		user = JSON.parse(localStorage.getItem('user'));
 
-		console.log(user['username'])
-		handleIncrement(user.username, category)
+		console.log(user['username']);
+		handleIncrement(user.username, category);
 	}
 	function byConfidence(a, b) {
 		if (a.confidence > b.confidence) {
-			return -1
+			return -1;
 		} else if (b.confidence > a.confidence) {
-			return 1
+			return 1;
 		} else {
-			return 0
+			return 0;
 		}
 	}
 	async function sendPhoto(data) {
-		let MLdata = {}
+		let MLdata = {};
 		let send = {
 			image: data,
-		}
+		};
 		let res = await fetch(backend('image'), {
 			method: 'POST',
 			headers: {
@@ -145,23 +145,23 @@ export default function Camera({ user }) {
 		})
 			.then()
 			.catch((error) => {
-				return
-			})
-		MLdata = await res.json()
-		let formattedMLData = []
+				return;
+			});
+		MLdata = await res.json();
+		let formattedMLData = [];
 		Object.entries(MLdata).forEach((entry) => {
-			const [key, value] = entry
-			formattedMLData.push({ type: key, bin: value[0], confidence: value[1] })
-		})
-		formattedMLData.sort(byConfidence)
-		console.log(formattedMLData)
-		const description = document.querySelector('#trashDescription')
+			const [key, value] = entry;
+			formattedMLData.push({ type: key, bin: value[0], confidence: value[1] });
+		});
+		formattedMLData.sort(byConfidence);
+		console.log(formattedMLData);
+		const description = document.querySelector('#trashDescription');
 		description.innerHTML = `<p>According to our model, your trash is ${
 			formattedMLData[0].type
 		} and is of type ${formattedMLData[0].bin}. Re has a ${
 			formattedMLData[0].confidence / 100
-		}% confidence rating.</p>`
-		setData(formattedMLData)
+		}% confidence rating.</p>`;
+		setData(formattedMLData);
 	}
 
 	return (
@@ -203,5 +203,5 @@ export default function Camera({ user }) {
 				</div>
 			</div>
 		</div>
-	)
+	);
 }
