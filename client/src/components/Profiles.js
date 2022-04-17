@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Profiles({ Data }) {
+export default function Profiles() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    // GET request using fetch inside useEffect React hook
+    fetch("http://localhost:8000/leaderboard")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
   return (
     <table id="profile">
       <thead>
@@ -13,7 +23,7 @@ export default function Profiles({ Data }) {
           <td>Points</td>
         </tr>
       </thead>
-      <tbody>{Item(Data)}</tbody>
+      <tbody>{Item(data)}</tbody>
     </table>
   );
 }

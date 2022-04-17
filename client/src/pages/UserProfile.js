@@ -6,7 +6,7 @@ export default function UserProfile() {
   const [user, setUser] = useState({});
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
-    fetch("https://localhost:8000/user/username")
+    fetch(`http://localhost:8000/user/${username}`)
       .then((response) => response.json())
       .then((data) => setUser(data));
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
