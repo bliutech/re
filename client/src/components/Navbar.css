@@ -1,6 +1,7 @@
 .navbar {
 	width: 100%;
 	background: var(--clr-primary-8);
+	z-index: 1;
 	box-shadow: var(--dark-shadow);
 }
 

@@ -1,3 +1,29 @@
-h1 {
+.description-container {
+	display: flex;
+	justify-content: center;
+}
+
+.element-1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 40vh;
+	color: var(--clr-primary-1);
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url('../assets/pexels-mali-maeder-802221.jpg') center/cover;
+}
+
+.first::first-letter {
 	color: var(--clr-primary-7);
+}
+
+.second::first-letter {
+	align-self: center;
+	color: var(--clr-primary-7);
+}
+
+.element-2 {
+	margin: 0 auto;
+	width: 90vw;
 }

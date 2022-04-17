@@ -6,7 +6,6 @@ import './App.css'
 
 import Home from './pages/Home'
 import LoginForm from './components/LoginForm'
-import Recycle from './components/Recycle'
 import Error404 from './pages/Error404'
 import ProtectedRoute from './components/ProtectedRoute'
 import Navbar from './components/Navbar'
@@ -15,7 +14,7 @@ import About from './pages/About'
 import UserProfile from './pages/UserProfile'
 import Leaderboard from './pages/Leaderboard'
 import Profile from './pages/Profile'
-import Camera fr
+import Camera from './pages/Camera'
 
 function App() {
 	const [user, setUser] = useState()
@@ -40,7 +39,7 @@ function App() {
 					path='/recycle'
 					element={
 						<ProtectedRoute user={user}>
-							<About />
+							<Camera />
 						</ProtectedRoute>
 					}
 				/>
