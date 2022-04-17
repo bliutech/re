@@ -35,9 +35,13 @@ class Model(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(Model, self).__init__()
         # initialize layers
-        self.resnet = models.resnet50(pretrained=False)
+        self.resnet = models.resnet50(pretrained=True)
         self.resnet.fc = nn.Linear(2048, 1024)
-        self.dense = nn.Linear(1024, 128)
+        self.dense = nn.Sequential(
+            nn.Linear(1024, 128),
+            nn.BatchNorm1d(128),
+            nn.LeakyReLU(0.1)
+        )
         self.out = nn.Linear(128, output_dim)
     
     def forward(self, inputs):
