@@ -44,7 +44,7 @@ export const handleRegister = async (email, password) => {
 	})
 	if (res.status >= 400) {
 		return {
-			error: 'Incorrect username or password',
+			error: 'User already exists with email',
 		}
 	} else {
 		const user = await res.json()
