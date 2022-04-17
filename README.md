@@ -1,4 +1,4 @@
-# :recycle: Re :recycle:
+# :recycle: Re (Recycling Elevated) :recycle:
 <img width="1512" alt="screen-min" src="https://user-images.githubusercontent.com/67720812/163716395-bafdc2e4-fd0b-4e43-a208-9acbcc2d8057.png">
 Ever finish your cup of boba and wonder, can I recycle this or not? Introducing Re, an interactive web app that lets you take a photo of your trash and tells you which bin it belongs to! To begin, register an account on the site, and start taking photos! Re tracks the number of trash items you have scanned, and it features a global leaderboard of users who scan the most trash.
 
