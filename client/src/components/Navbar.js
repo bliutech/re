@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import "font-awesome/css/font-awesome.min.css";
+import {Link} from 'react-router-dom'
 
 export default function Navbar({ setUser }) {
   const [isActive, setActive] = useState(false);
@@ -31,22 +32,22 @@ export default function Navbar({ setUser }) {
             id="nav-links"
           >
             <li>
-              <a className="nav-link scroll-link">home</a>
+              <Link to='/' className="nav-link scroll-link">home</Link>
             </li>
             <li>
-              <a className="nav-link scroll-link">recycle</a>
+              <Link to='/recycle' className="nav-link scroll-link">recycle</Link>
             </li>
             <li>
-              <a className="nav-link scroll-link">leaderboard</a>
+              <Link to='/leaderboard' className="nav-link scroll-link">leaderboard</Link>
             </li>
             <li>
-              <a className="nav-link scroll-link">about</a>
+              <Link to='/about' className="nav-link scroll-link">about</Link>
             </li>
             <li>
-              <a className="nav-link scroll-link">profile</a>
+              <Link to='/profile' className="nav-link scroll-link">profile</Link>
             </li>
             <li>
-              <a
+              <Link to='/'
                 className="nav-link scroll-link"
                 onClick={() => {
                   console.log("hello");
@@ -55,7 +56,7 @@ export default function Navbar({ setUser }) {
                 }}
               >
                 logout
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
