@@ -192,4 +192,3 @@ export default function Camera() {
       <br/><br/><br/>
     </div>
   );
-}

@@ -27,6 +27,21 @@
 
 .camera-click {
   margin: 0 0 1rem 0;
+	width: 50%;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.camera-container-2 {
+	background: url(../assets/Login-background.jpg);
+	background-attachment: fixed;
+}
+
+.camera-container {
+	background: hsla(155, 18%, 19%, 0.9);
+	background-attachment: fixed;
+	overflow: scroll;
 }
 
 #trashDescription {

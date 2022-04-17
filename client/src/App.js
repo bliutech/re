@@ -36,7 +36,7 @@ function App() {
 							path='/home'
 							element={
 								<ProtectedRoute user={user}>
-									<Home />
+									<About />
 								</ProtectedRoute>
 							}
 						/>
@@ -56,7 +56,9 @@ function App() {
 								</ProtectedRoute>
 							}
 						/>
-						<Route path='/leaderboard' element={
+						<Route
+							path='/leaderboard'
+							element={
 								<ProtectedRoute user={user}>
 									<Leaderboard />
 								</ProtectedRoute>
@@ -72,4 +74,4 @@ function App() {
 	)
 }
 
-export default App;
+export default App

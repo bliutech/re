@@ -28,34 +28,25 @@ export default function About() {
 							<span className='Re'>Re</span>fer
 						</h1>
 						<p>
-							Simply take a photo of your trash using our built-in camera app.
+							Simply take a photo of your trash using our built-in camera app,
+							and our machine learning model will categorize into one of the
+							four categories: landfill, recycle, compost, or special.
 						</p>
 					</div>
 				</div>
-				<h5>So how does Re work?</h5>
-				<ul>
-					<li>
-						First, please take a photo of your trash using our built-in camera
-						app
-					</li>
-					<li>Our Tensorflow model then predicts what that trash is</li>
-					<li>
-						Finally, we correlate your trash to its corresponding type
-						(landfill, recycle, compost, or special) so that you can both
-						improve your recycling habits and feel at ease after disposing of
-						your trash.
-					</li>
-				</ul>
-				<h3>Meet the Team</h3>
-				<table>
-					<tr>
-						<td>Benson Liu</td>
-						<td>Jordan Lin</td>
-						<td>Connor Pederson</td>
-						<td>Ming Zhu</td>
-						<td>Henry Wang</td>
-					</tr>
-				</table>
+
+				<div className='element-2'>
+					<div className='section '>
+						<h1>
+							c<span className='Re'>Re</span>eators
+						</h1>
+						<p>Connor Pedersen</p>
+						<p>Jordan Lin</p>
+						<p>Ming Zhu</p>
+						<p>Benson Liu</p>
+						<p>Henry Wang</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	)
