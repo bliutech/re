@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./styles.css";
 import "./Camera.css";
 import { backend } from "../utils/endpoints";
-import Navbar from "../components/Navbar";
 
 export default function Camera() {
   const [data, setData] = useState();
@@ -39,6 +37,28 @@ export default function Camera() {
     browserName = "No browser detection";
   }
 
+  const labelToText = {
+    'battery': 'Battery',
+    'biological': 'Biological',
+    'brown glass': 'Biological',
+    'cardboard': 'Cardboard',
+    'clothes': 'Clothes',
+    'green-glass': 'Green glass',
+    'metal': 'Metal',
+    'paper': 'Paper',
+    'plastic': 'Plastic',
+    'shoes': 'Shoes',
+    'trash': 'Trash',
+    'white glass': 'White glass',
+  }
+
+  const binToText = {
+    'landfill': 'Landfill',
+    'recycle': 'Recycle',
+    'compost': 'Compost',
+    'special': 'Special',
+  }
+
   const getVideo = () => {
     navigator.mediaDevices
       .getUserMedia({ audio: false, video: { width: 300 } })
@@ -47,20 +67,6 @@ export default function Camera() {
         let video = videoRef.current;
         video.srcObject = stream;
         video.play();
-
-        // let playPromise = video.play();
-
-        // if (playPromise !== undefined)
-        // {
-        //     playPromise.then(_ => {
-
-        //         // video.pause();
-        //     })
-        //     .catch(error =>
-        //     {
-
-        //     });
-        // }
       })
       .catch((err) => {
         console.error("error:", err);
@@ -93,8 +99,8 @@ export default function Camera() {
       ctx.drawImage(video, 0, 0, width, height);
       let pixels = ctx.getImageData(0, 0, width, height);
 
-      color.style.backgroundColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`;
-      color.style.borderColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`;
+      // color.style.backgroundColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`;
+      // color.style.borderColor = `rgb(${pixels.data[0]},${pixels.data[1]},${pixels.data[2]})`;
     }, 200);
   };
 
@@ -152,45 +158,38 @@ export default function Camera() {
     formattedMLData.sort(byConfidence);
     console.log(formattedMLData);
     const description = document.querySelector("#trashDescription");
-    description.innerHTML = `<p>According to our model, your trash is ${
-      formattedMLData[0].type
-    } and is of type ${formattedMLData[0].bin}. Re has a ${
-      formattedMLData[0].confidence / 100
-    }% confidence rating.</p>`;
+    description.innerHTML = `
+      [${formattedMLData[0].confidence / 100}%] (${labelToText[formattedMLData[0].type]}) <b>${binToText[formattedMLData[0].bin]}</b><br/>
+      [${formattedMLData[1].confidence / 100}%] (${labelToText[formattedMLData[1].type]}) <b>${binToText[formattedMLData[1].bin]}</b><br/>
+      [${formattedMLData[2].confidence / 100}%] (${labelToText[formattedMLData[2].type]}) <b>${binToText[formattedMLData[2].bin]}</b><br/>
+    `;
     setData(MLdata);
   }
 
   return (
-    <div className="container">
-      <Navbar />
-      <div ref={colorRef} className="scene">
-        {/* <img
-                className="mountains"
-                src="https://i.ibb.co/RjYk1Ps/2817290-eps-1.png"
-            /> */}
-      </div>
-      <div className="webcam-video">
-        <button onClick={() => takePhoto()}>Take a photo</button>
-        <video
-          onCanPlay={() => paintToCanvas()}
-          ref={videoRef}
-          className="player"
-        />
-        <canvas style={{ display: "none" }} ref={photoRef} className="photo" />
-        <div className="photo-booth">
-          <div ref={stripRef} className="strip">
-            <a id="recentPhoto"></a>
-            <button
-              className="submit"
-              style={{ display: "none" }}
-              onClick={handleClick}
-            >
-              Submit Trash
-            </button>
-            <p id="trashDescription"></p>
-          </div>
+    <div className="webcam-video">
+      <video id="preview"
+        onCanPlay={() => paintToCanvas()}
+        ref={videoRef}
+        className="player"
+      /><br/>
+      <button className="camera-click" onClick={() => takePhoto()}>Take a photo</button>
+      <br/>
+      <canvas style={{ display: "none" }} ref={photoRef} className="photo" />
+      <div className="photo-booth">
+        <div ref={stripRef} className="strip">
+          <a id="recentPhoto"></a>
         </div>
-      </div>
+      </div><br/>
+      <button
+        className="camera-click submit"
+        style={{ display: "none" }}
+        onClick={handleClick}
+      >
+        Submit Trash
+      </button>
+      <p id="trashDescription"></p>
+      <br/><br/><br/>
     </div>
   );
 }

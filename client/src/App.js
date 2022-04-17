@@ -36,19 +36,18 @@ function App() {
 							path='/home'
 							element={
 								<ProtectedRoute user={user}>
-									{/* <Home /> */}
-									<Camera />
+									<Home />
 								</ProtectedRoute>
 							}
 						/>
-						{/* <Route
+						<Route
 							path='/recycle'
 							element={
 								<ProtectedRoute user={user}>
 									<Camera />
 								</ProtectedRoute>
 							}
-						/> */}
+						/>
 						<Route
 							path='/about'
 							element={
