@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import "./styles.css";
 import { backend } from "../utils/endpoints";
 import Navbar from "../components/Navbar";
 
