@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.984951c3.css",
-    "main.js": "/static/js/main.daa88cb5.js",
+    "main.css": "/static/css/main.a6600a02.css",
+    "main.js": "/static/js/main.95ccd588.js",
     "static/media/Login-background.jpg": "/static/media/Login-background.15bafb532c1e71964d65.jpg",
+    "static/media/pexels-mali-maeder-802221.jpg": "/static/media/pexels-mali-maeder-802221.9606e501f098146ff363.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/index.html",
-    "main.984951c3.css.map": "/static/css/main.984951c3.css.map",
-    "main.daa88cb5.js.map": "/static/js/main.daa88cb5.js.map"
+    "main.a6600a02.css.map": "/static/css/main.a6600a02.css.map",
+    "main.95ccd588.js.map": "/static/js/main.95ccd588.js.map"
   },
   "entrypoints": [
-    "static/css/main.984951c3.css",
-    "static/js/main.daa88cb5.js"
+    "static/css/main.a6600a02.css",
+    "static/js/main.95ccd588.js"
   ]
 }
