@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         compared to everyone else. Race your friends, recycle frequently, and climb to the top of the leaderboard!
       </p>
       <h3>Let's Begin.</h3>
+      <p>Head over to the Recycle tab to begin recycling!</p>
     </>
   );
 }
