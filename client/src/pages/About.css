@@ -68,9 +68,12 @@
 }
 
 .element-2 {
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2rem;
 	width: 90vw;
 	font-size: 2rem;
+	max-width: 600px;
 }
 
 .element-2 p {
