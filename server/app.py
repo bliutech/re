@@ -31,7 +31,7 @@ def create_tables():
 api.add_resource(User, "/register")
 api.add_resource(Image, "/image")
 api.add_resource(GetUser, "/user/<string:name>")
-# api.add_resource(UserList, "/users")
+api.add_resource(UserList, "/users")
 api.add_resource(Leaderboard, "/leaderboard")
 
 @jwt.auth_response_handler
@@ -39,6 +39,7 @@ def customized_response_handler(access_token, identity):
     resp = {"access_token": access_token.decode("utf-8")}
     resp.update(identity.json())
     return jsonify(resp)
+
 
 if __name__ == "__main__":
     db.init_app(app)

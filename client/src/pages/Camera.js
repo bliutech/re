@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 
 export default function Camera() {
   const [data, setData] = useState();
+
   const videoRef = useRef(null);
   const photoRef = useRef(null);
   const stripRef = useRef(null);

@@ -38,7 +38,7 @@ Variables
 	--clr-grey-9: hsl(212, 33%, 89%);
 	--clr-grey-10: hsl(210, 36%, 96%);
 	--clr-white: #fff;
-	--ff-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+	--ff-primary: 'Lato', sans-serif;,
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--transition: all 250ms ease;
 	--spacing: 0.15rem;

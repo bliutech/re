@@ -1,6 +1,5 @@
 # Server
 
-
 ## Installation of Dependencies
 On Mac:
 1. Install python 3.9
