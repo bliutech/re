@@ -36,7 +36,7 @@ def trash_type(output):
 
 def normalize(confidence):
     # tanh function
-    return 0.5 * (np.tanh(2 * confidence - 1) + 1)
+    return 0.5 * (np.tanh(3 * confidence - 1) + 1)
 
 
 def normalize_output(output, top=3, display=True):
@@ -46,7 +46,7 @@ def normalize_output(output, top=3, display=True):
     trash_labels = [label_to_trash[output[0]] for output in output_sort[:top]]
     trash_output = [output[1] for output in output_sort[:top]]
     trash_confidence = list(
-        normalize(np.asarray(trash_output) / max(trash_output))
+        normalize(np.asarray(trash_output) / sum(trash_output))
     )
     if display:
         for i, output in enumerate(trash_labels):
@@ -57,9 +57,9 @@ def normalize_output(output, top=3, display=True):
 
 def image_search(img_path):
     # use test image (need to be replaced)
-    image_array = compvision.imread(img_path)
+    image_array = np.flip(compvision.imread(img_path), axis=-1)
     # get model raw output
-    output = model_run(image_array, "model/models/model_0416_1135", process=True)
+    output = model_run(image_array, "model/models/model_0416_1942", process=True)
     # get output precentage (normalize to top n)
     output_trash = normalize_output(output, top=3, display=False)
     # get trash type
