@@ -6,7 +6,7 @@ from flask_jwt import JWT
 from flask_cors import CORS
 
 from db import db
-from resources.user import User
+from resources.user import User, UserList
 from resources.image import Image
 
 import os
@@ -38,6 +38,7 @@ def customized_response_handler(access_token, identity):
 
 
 api.add_resource(User, "/register")
+api.add_resource(UserList, "/users")
 api.add_resource(Image, "/image")
 
 if __name__ == "__main__":
