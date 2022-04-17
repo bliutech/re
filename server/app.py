@@ -30,7 +30,7 @@ def create_tables():
     db.create_all()
 
 api.add_resource(User, "/register")
-#api.add_resource(CV, "/img")
+api.add_resource(Image, "/image")
 api.add_resource(GetUser, "/user/<string:name>")
 api.add_resource(Leaderboard, "/leaderboard")
 
@@ -40,9 +40,6 @@ def customized_response_handler(access_token, identity):
     resp.update(identity.json())
     return jsonify(resp)
 
-
-api.add_resource(User, "/register")
-api.add_resource(Image, "/image")
 
 if __name__ == "__main__":
     db.init_app(app)
