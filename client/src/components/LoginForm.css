@@ -126,3 +126,10 @@ input:focus {
 	height: 100%;
 	object-fit: cover;
 }
+
+.err {
+	color: lightcoral;
+	font-size: 0.8rem;
+	font-family: 700;
+	animation: appear 500ms ease;
+}
