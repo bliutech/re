@@ -23,15 +23,13 @@ export default function About() {
 				</li>
 			</ul>
 			<h3>Meet the Team</h3>
-			<table>
-				<tr>
-					<td>Benson Liu</td>
-					<td>Jordan Lin</td>
-					<td>Connor Pederson</td>
-					<td>Ming Zhu</td>
-					<td>Henry Wang</td>
-				</tr>
-			</table>
+			<ul>
+				<li>Benson Liu</li>
+				<li>Jordan Lin</li>
+				<li>Connor Pederson</li>
+				<li>Ming Zhu</li>
+				<li>Henry Wang</li>
+			</ul>
 		</>
 	)
 }
