@@ -1,8 +1,7 @@
 .navbar {
 	width: 100%;
-	background: var(--clr-primary-8);
-	z-index: 1;
-	box-shadow: var(--dark-shadow);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(20px);
 }
 
 .nav-icons {
