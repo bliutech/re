@@ -1,4 +1,32 @@
+.webcam-video {
+  text-align: center;
+  align-items: center;
+}
+
 #photoTaken {
+  object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 20rem;
+  width: 20rem;
+  display: block;
+  margin: 0 auto;
+}
+
+#preview {
+  object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 20rem;
+  width: 20rem;
+  margin: 0 0 0.6rem 0;
+}
+
+.photo-booth {
+  margin: 0 0 -0.5rem 0;
+  padding: 0 0 0 0;
+}
+
+.camera-click {
+  margin: 0 0 1rem 0;
 	width: 50%;
 	height: 100%;
 	display: block;
@@ -14,4 +42,9 @@
 	background: hsla(155, 18%, 19%, 0.9);
 	background-attachment: fixed;
 	overflow: scroll;
+}
+
+#trashDescription {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
