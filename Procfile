@@ -1,1 +1,0 @@
-web: sh -c 'cd ./server/ && python3 app.py'
