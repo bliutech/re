@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f3ba0275.css",
-    "main.js": "/static/js/main.fd53dd56.js",
+    "main.js": "/static/js/main.2e2ae84e.js",
     "static/media/Login-background.jpg": "/static/media/Login-background.15bafb532c1e71964d65.jpg",
     "static/media/pexels-mali-maeder-802221.jpg": "/static/media/pexels-mali-maeder-802221.9606e501f098146ff363.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -11,10 +11,10 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/index.html",
     "main.f3ba0275.css.map": "/static/css/main.f3ba0275.css.map",
-    "main.fd53dd56.js.map": "/static/js/main.fd53dd56.js.map"
+    "main.2e2ae84e.js.map": "/static/js/main.2e2ae84e.js.map"
   },
   "entrypoints": [
     "static/css/main.f3ba0275.css",
-    "static/js/main.fd53dd56.js"
+    "static/js/main.2e2ae84e.js"
   ]
 }
